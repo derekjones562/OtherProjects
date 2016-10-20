@@ -17,6 +17,6 @@ from django.conf.urls import url,include
 from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #url(r'^$', table_of_contents.html),
     url(r'^romannumeralconverter/', include('converter.urls')),
-    url(r'^storage/', include('storingNumerals.urls')),
 ]
