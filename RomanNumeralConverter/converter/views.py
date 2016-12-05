@@ -26,7 +26,7 @@ class ConverterView(View):
 			if existing_in_db.exists():
 				previous_times_converted=Conversion.objects.get(starting_num=original_number).times_converted
 				Conversion.objects.select_related().filter(starting_num=original_number).update(times_converted= previous_times_converted + 1)
-				self.RomanNumeral=existing_in_db.values('roman_numeral')[0].get('roman_numeral')
+				self.RomanNumeral=existing_in_db.values('roman_numeral').first().get('roman_numeral')
 			else:
 				number = self.add_letter(number,1000, 'M')
 				number = self.add_letter(number,900, 'CM')
