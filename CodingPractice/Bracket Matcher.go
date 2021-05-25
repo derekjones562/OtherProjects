@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"source.vivint.com/propm/testly/asserts"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 /*
@@ -45,7 +45,7 @@ func BracketMatcher(str string) string {
 		if !ok {
 			return NotMatches
 		}
-		fmt.Println(BracketStack)
+		//fmt.Println(BracketStack)
 	}
 	if len(BracketStack) > 0 {
 		return NotMatches
@@ -83,10 +83,11 @@ func removeFromStack(stack []rune, r rune) ([]rune, bool) {
 
 
 func main() {
-	TestCorrectInputParens()
-	TestIncorrectInputParens()
-	TestCorrectInputBracketAndParens()
-	TestIncorrectInputBracketAndParens()
+	t := &testing.T{}
+	TestCorrectInputParens(t)
+	TestIncorrectInputParens(t)
+	TestCorrectInputBracketAndParens(t)
+	TestIncorrectInputBracketAndParens(t)
 	//input := "(coder)(byte))"
 	//fmt.Println(BracketMatcher(input))
 
@@ -96,17 +97,17 @@ func main() {
 
 
 
-func TestCorrectInputParens() {
-	asserts.Assert.IsEqualTo(BracketMatcher("(coder)(byte))"), Matches)
+func TestCorrectInputParens(t *testing.T) {
+	assert.Equal(t, BracketMatcher("(coder)(byte))"), Matches)
 }
-func TestIncorrectInputParens() {
-	asserts.Assert.IsEqualTo(BracketMatcher("(c(oder)) b(yte)"), NotMatches)
-	asserts.Assert.IsEqualTo(BracketMatcher(")(c(oder)) b(yte)"), NotMatches)
+func TestIncorrectInputParens(t *testing.T) {
+	assert.Equal(t, BracketMatcher("(c(oder)) b(yte)"), NotMatches)
+	assert.Equal(t, BracketMatcher(")(c(oder)) b(yte)"), NotMatches)
 }
-func TestCorrectInputBracketAndParens() {
-	asserts.Assert.IsEqualTo(BracketMatcher("{(c(oder))} b({y}te)"), Matches)
+func TestCorrectInputBracketAndParens(t *testing.T) {
+	assert.Equal(t, BracketMatcher("{(c(oder))} b({y}te)"), Matches)
 }
-func TestIncorrectInputBracketAndParens() {
-	asserts.Assert.IsEqualTo(BracketMatcher("}(c(ode{r)) b}(yte)"), NotMatches)
-	asserts.Assert.IsEqualTo(BracketMatcher("(c(ode{r)) b}(yte)"), NotMatches)
+func TestIncorrectInputBracketAndParens(t *testing.T) {
+	assert.Equal(t, BracketMatcher("}(c(ode{r)) b}(yte)"), NotMatches)
+	assert.Equal(t, BracketMatcher("(c(ode{r)) b}(yte)"), NotMatches)
 }
