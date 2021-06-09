@@ -29,21 +29,16 @@ func FindTriplets(Input []int, sum int) [][]int {
 	sort.Ints(Input)
 
 	var AllTriplets [][]int
-	firstTupleValue := Input[0]
-	PossibleSecond := Input[1:]
-	PossibleThird := Input[2:]
 
-
-	for i, v := range Input {
-		firstTupleValue = v
-		PossibleSecond [i:]
-
-		for values in PosibleSEcond {
-			for values in Posible third {
-			if the sum of the three < sum {
-			append AllTriplets
-		}
-		}
+	for i, v := range Input[:len(Input)-2] {
+		PossibleSecond := Input[i+1:]
+		for j, w := range PossibleSecond {
+			PossibleThird := PossibleSecond[j+1:]
+			for _, x := range PossibleThird {
+				if v+w+x < sum {
+					AllTriplets = append(AllTriplets, []int{v,w,x})
+				}
+			}
 		}
 	}
 
@@ -61,16 +56,15 @@ func FindTriplets(Input []int, sum int) [][]int {
 	//   }
 	// }
 
-
 	return AllTriplets
 }
 
 func main() {
-	Test1()
-	Test2()
+	TestCommonbond1()
+	TestCommonbond2()
 }
 
-func Test1() {
+func TestCommonbond1() {
 	Input := []int{-2, 0, 1, 3}
 	sum := 2
 	//call my func
@@ -85,7 +79,7 @@ func Test1() {
 
 //[1, 3, 4, 5, 7]
 
-func Test2() {
+func TestCommonbond2() {
 	Input := []int{5, 1, 3, 4, 7}
 	sum := 12
 	outPut := FindTriplets(Input, sum)
