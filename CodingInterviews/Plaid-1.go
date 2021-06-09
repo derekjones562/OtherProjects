@@ -26,7 +26,7 @@ Central bank algorithm
 
 			A=central
 
-Output is shorter than input
+change algorithm so that Output is always shorter than input
 
  */
 
@@ -80,6 +80,7 @@ func PrintOutput(output []int) {
 func main() {
 	TestNettingAlgorithm()
 	//TestNettingAlgorithm2Inputs()
+	TestNettingAlgorithmNoCentral()
 
 }
 
@@ -116,7 +117,7 @@ func TestNettingAlgorithm2Inputs() {
 	PrintOutput(output)
 
 }
-func Test {
+func TestNettingAlgorithmNoCentral() {
 	Input := [][]int{
 		{1, 2, 1},
 		{1, 3, 1},
