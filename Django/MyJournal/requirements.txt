@@ -1,0 +1,11 @@
+# Common
+Django==1.10
+djangorestframework==3.5.3
+
+# Development
+flake8==3.0.4
+pylint==1.6.4
+pylint-django==0.7.2
+ipython==5.1.0
+django-extensions==1.7.4
+bpython==0.16
