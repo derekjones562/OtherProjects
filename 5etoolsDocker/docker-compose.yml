@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  5etools:
+    image: ghcr.io/5etools-mirror-1/5etools:1.174.4
+    restart: unless-stopped
+    ports:
+      - "8080:80" # where 8080 is the port on the machine and 80 is the internal port of the container. ie change 8080 to change which port you want to access the webserver at.
+                                
